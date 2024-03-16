@@ -1,0 +1,2 @@
+# Voice_assistant
+ollama_assistant_chroma_embed_v6_3_gemini
