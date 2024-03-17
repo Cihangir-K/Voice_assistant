@@ -57,17 +57,18 @@ client = OpenAI(
                 api_key='ollama',
     )
 
-# model_local =ChatOllama(model='stablelm-zephyr')
 # model_local =ChatOllama(model='openhermes')
+# model_local =ChatOllama(model='stablelm-zephyr')
 # model_local =ChatOllama(model='mistral')
 # model_local =ChatOllama(model='mistral_turkish')
 # model_local =ChatOllama(model='experiment26')
 # model_local =ChatOllama(model='gemma')
+model_local =ChatOllama(model='gemma:2b-instruct')
 # model_local =ChatOllama(model='llava')
 
 
 #google gemini api 
-model_local = "gemini"
+# model_local = "gemini"
 
 if(model_local == "gemini"):
     model_local = ChatGoogleGenerativeAI(
@@ -176,9 +177,11 @@ def get_ai_response_w_db(input):
         )
 
 
-        qa_system_prompt = """You are an assistant for question-answering tasks. \
-        Use the following pieces of retrieved context to answer the question. \
+        qa_system_prompt = """You are an helpful ai assistant for question-answering tasks. \
+        If you know the answer, answer the question.\
+        If you don't know the answer try to use the following pieces of retrieved context to answer the question. \
         If you don't know the answer, just say that you don't know. \
+        If its not in context use your own datas. \
         Use three sentences maximum and keep the answer concise.\
 
         {context}"""
